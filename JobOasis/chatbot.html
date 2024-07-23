@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocatio</title>
+    <!-- It's derived from the Latin word for "calling" or "vocation," which suits its role in guiding individuals in their career paths. -->
+    <style>
+        /* CSS Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .chat-container {
+            width: 400px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .chat-header {
+            background-color: #4CAF50;
+            color: #ffffff;
+            padding: 20px;
+            font-weight: bold;
+            text-align: center;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .chat-messages {
+            padding: 20px;
+            height: 300px;
+            overflow-y: auto;
+            background-color: #f7f7f7;
+        }
+
+        .chat-message {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .user-message {
+            background-color: #e6f7ff;
+            padding: 10px;
+            border-radius: 15px;
+            text-align: left;
+            max-width: 70%;
+        }
+
+        .bot-message {
+            background-color: #ffffff;
+            padding: 10px;
+            border-radius: 15px;
+            text-align: left;
+            max-width: 70%;
+        }
+
+        .chat-input-container {
+            display: flex;
+            background-color: #ffffff;
+            border-top: 1px solid #ddd;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            outline: none;
+        }
+
+        .chat-submit {
+            background-color: #4CAF50;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-top-right-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+            .chat-submit:hover {
+                background-color: #45a049;
+            }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">Vocatio</div>
+        <div class="chat-messages" id="chat-messages">
+            <div class="chat-message bot-message">
+                🤖 Welcome to Vocatio! 🌟<br>
+                Greetings! I'm Vocatio, your personal career adviser bot. 🚀<br>
+                Please note that I'm currently in development, so consider this encounter a test run. Together, we'll explore your career aspirations and chart a path toward your professional goals. 💼✨<br>
+                Feel free to ask me anything related to careers, job search tips, or professional development. Let's embark on this journey together!<br>
+                Just type "start" whenever you're ready to begin. 🌟
+            </div>
+        </div>
+        <div class="chat-input-container">
+            <input type="text" class="chat-input" id="user-input" placeholder="Type your message...">
+            <button class="chat-submit" onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript Code
+        function appendMessage(message, role) {
+            const chatMessages = document.getElementById('chat-messages');
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('chat-message', role + '-message');
+            messageElement.innerHTML = message;
+            chatMessages.appendChild(messageElement);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function sendMessage() {
+            const userInput = document.getElementById('user-input').value;
+            appendMessage(userInput, 'user');
+            document.getElementById('user-input').value = '';
+        }
+    </script>
+
+</body>
+</html>

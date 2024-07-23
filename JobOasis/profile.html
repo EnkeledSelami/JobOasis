@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+    <div class="profile-container">
+        <h1>Welcome, <span id="username"></span></h1>
+        <div class="profile-info">
+            <p><strong>Name:</strong> <span id="name"></span></p>
+            <p><strong>Email:</strong> <span id="email"></span></p>
+            <p><strong>Username:</strong> <span id="usernameValue"></span></p>
+            <p><strong>Role:</strong> User</p>
+        </div>
+        <a href="logout.php" class="logout-btn">Logout</a>
+        <a href="index1.html" class="home-btn">Home</a>
+    </div>
+
+    <script>
+        function fetchUserData() {
+            fetch('user_data.php')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('name').textContent = data.name;
+                    document.getElementById('username').textContent = data.username;
+                    document.getElementById('usernameValue').textContent = data.username;
+                    document.getElementById('email').textContent = data.email;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+        document.addEventListener('DOMContentLoaded', fetchUserData);
+    </script>
+</body>
+</html>

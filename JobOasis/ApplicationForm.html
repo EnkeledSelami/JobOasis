@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        form#ft-form {
+            width: 500px;
+            margin: 0 auto;
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+            form#ft-form fieldset {
+                margin-bottom: 20px;
+                border: none;
+            }
+
+            form#ft-form legend {
+                font-weight: bold;
+                margin-bottom: 10px;
+            }
+
+            form#ft-form label {
+                display: block;
+                margin-bottom: 10px;
+            }
+
+            form#ft-form input,
+            form#ft-form select {
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                box-sizing: border-box;
+            }
+
+            form#ft-form .two-cols {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+
+            form#ft-form .btns {
+                text-align: right;
+            }
+
+            form#ft-form input[type="submit"] {
+                background-color: #4CAF50;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                margin-left: 10px;
+            }
+
+                form#ft-form input[type="submit"]:hover {
+                    background-color: #45a049;
+                }
+
+            form#ft-form input[type="button"] {
+                background-color: #f44336;
+                color: white;
+                padding: 15px 30px; /* Increased button size */
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+                form#ft-form input[type="button"]:hover {
+                    background-color: #d32f2f;
+                }
+
+            form#ft-form .success-message {
+                color: #ffffff;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 24px;
+                background-color: rgba(0, 0, 0, 0.8);
+                padding: 20px;
+                border-radius: 5px;
+                display: none;
+            }
+
+        body {
+            background-color: #200258;
+        }
+
+        .back-button-container {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+            .back-button-container input[type="button"] {
+                background-color: #f44336; /* Red color */
+                color: white;
+                padding: 15px 25px; /* Increased button size */
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+                .back-button-container input[type="button"]:hover {
+                    background-color: #d32f2f; /* Darker shade of red on hover */
+                }
+    </style>
+</head>
+<body>
+    <div class="back-button-container">
+        <input type="button" value="Back" onclick="window.history.back()" />
+    </div>
+
+    <form action="index1.html" id="ft-form" method="POST" accept-charset="UTF-8" enctype="multipart/form-data">
+        <fieldset>
+            <legend>Application Form</legend>
+            <label>
+                Write something about yourself *
+                <input type="text" name="Application for" required>
+            </label>
+        </fieldset>
+        <fieldset>
+            <legend>Personal data</legend>
+            <div class="two-cols">
+                <label>
+                    First name *
+                    <input type="text" name="First name" required>
+                </label>
+                <label>
+                    Last name *
+                    <input type="text" name="Family name" required>
+                </label>
+            </div>
+            <div class="two-cols">
+                <label>
+                    Citizenship
+                    <input type="text" name="Citizenship">
+                </label>
+                <label>
+                    Date of birth
+                    <input type="date" name="Date of birth">
+                </label>
+            </div>
+            <label>
+                Address
+                <input type="text" name="Address">
+            </label>
+            <div class="two-cols">
+                <label>
+                    ZIP Code
+                    <input type="text" name="ZIP">
+                </label>
+                <label>
+                    City
+                    <input type="text" name="City">
+                </label>
+            </div>
+            <div class="two-cols">
+                <label>
+                    Phone *
+                    <input type="tel" name="Phone" required>
+                </label>
+                <label>
+                    Email address *
+                    <input type="email" name="Email" required>
+                </label>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Application documents</legend>
+            <input type="hidden" name="MAX_FILE_SIZE" value="10485760">
+            <div class="two-cols">
+                <label>
+                    Application letter
+                    <input type="file" name="Application letter" accept=".doc,.docx,.pdf">
+                </label>
+                <label>
+                    Curriculum vitae
+                    <input type="file" name="Curriculum vitae" accept=".doc,.docx,.pdf">
+                </label>
+            </div>
+            <p>Possible file types: DOC, PDF. Maximum file size: 10 MB.</p>
+        </fieldset>
+        <div class="btns">
+            <input type="text" name="_gotcha" value="" style="display:none;">
+            <input type="submit" value="Submit application">
+        </div>
+        <p class="success-message" id="successMessage" style="display: none;">Application sent!</p>
+
+        <script>
+            document.getElementById("ft-form").addEventListener("submit", function (event) {
+                event.preventDefault();
+                document.getElementById("successMessage").style.display = "block";
+                setTimeout(function () {
+                    window.location.href = "index1.html";
+                }, 1500);
+            });
+        </script>
+    </form>
+</body>
+</html>
